@@ -187,7 +187,7 @@ export class GeminiProApi implements LLMApi {
     try {
       // https://github.com/google-gemini/cookbook/blob/main/quickstarts/rest/Streaming_REST.ipynb
       const chatPath = this.path(
-        Google.ChatPath(modelConfig.model),
+        Google.ChatPath(modelConfig.model, accessStore.googleApiVersion),
         shouldStream,
       );
 

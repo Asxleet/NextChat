@@ -52,7 +52,8 @@ export async function handle(
 export const GET = handle;
 export const POST = handle;
 
-export const runtime = "edge";
+// 本地开发用 nodejs（支持代理），部署后用 edge（更快）
+export const runtime = process.env.NODE_ENV === "development" ? "nodejs" : "edge";
 export const preferredRegion = [
   "bom1",
   "cle1",

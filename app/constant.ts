@@ -195,8 +195,8 @@ export const Azure = {
 
 export const Google = {
   ExampleEndpoint: "https://generativelanguage.googleapis.com/",
-  ChatPath: (modelName: string) =>
-    `v1beta/models/${modelName}:streamGenerateContent`,
+  ChatPath: (modelName: string, apiVersion: string = "v1beta") =>
+    `${apiVersion}/models/${modelName}:streamGenerateContent`,
 };
 
 export const Baidu = {
@@ -421,8 +421,8 @@ You are an AI assistant with access to system tools. Your role is to help users 
 `;
 
 export const SUMMARIZE_MODEL = "gpt-4o-mini";
-export const GEMINI_SUMMARIZE_MODEL = "gemini-pro";
-export const DEEPSEEK_SUMMARIZE_MODEL = "deepseek-v4-pro";
+export const GEMINI_SUMMARIZE_MODEL = "gemini-3.1-flash-lite";
+export const DEEPSEEK_SUMMARIZE_MODEL = "deepseek-v4-flash";
 
 export const KnowledgeCutOffDate: Record<string, string> = {
   default: "2021-09",
@@ -483,6 +483,7 @@ export const VISION_MODEL_REGEXES = [
   /gemini-1\.5/,
   /gemini-exp/,
   /gemini-2\.[05]/,
+  /gemini-3\./,
   /learnlm/,
   /qwen-vl/,
   /qwen2-vl/,
@@ -561,7 +562,10 @@ const googleModels = [
   "gemini-2.0-pro-exp",
   "gemini-2.0-pro-exp-02-05",
   "gemini-2.5-pro-preview-06-05",
-  "gemini-2.5-pro"
+  "gemini-2.5-pro",
+  "gemini-3.5-flash",
+  "gemini-3.1-pro-preview",
+  "gemini-3.1-flash-lite",
 ];
 
 const anthropicModels = [
@@ -650,7 +654,11 @@ const iflytekModels = [
   "4.0Ultra",
 ];
 
-const deepseekModels = ["deepseek-v4-pro", "deepseek-coder", "deepseek-reasoner"];
+const deepseekModels = [
+  "deepseek-v4-pro", 
+  "deepseek-coder", 
+  "deepseek-reasoner"
+];
 
 const xAIModes = [
   "grok-beta",
